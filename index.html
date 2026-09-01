@@ -2,237 +2,367 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keide — прокат платьев</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KEIDE — чистая вода по подписке в Алматы</title>
+<meta name="description" content="Ставим фильтр для воды бесплатно, обслуживаем сами. Подписка от 4999 ₸ в месяц, первый месяц бесплатно. Алматы.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ivory: #F7F2EC; --ink: #2A2320; --plum: #4B2E3A; --rose: #C98A9E;
-    --gold: #AD8A50; --line: #E4DACD; --card-bg: #FFFFFF;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--ivory); color: var(--ink); font-family: 'Manrope', sans-serif; line-height: 1.45; }
-  h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 500; }
+:root{
+  --paper:#F4F9FB;
+  --panel:#FFFFFF;
+  --sky:#E3F0F6;
+  --line:#D2E3EB;
+  --deep:#0A2B3B;
+  --mute:#5C7C8B;
+  --blue:#0E86B8;
+  --blue-d:#0B6C95;
+  --wa:#1FBF5C;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--deep);
+  font-family:'Manrope',system-ui,sans-serif;
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Unbounded',system-ui,sans-serif;font-weight:500;line-height:1.18;letter-spacing:-.015em}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--blue);
+}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 
-  header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 32px; border-bottom: 1px solid var(--line);
-  }
-  .logo { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; color: var(--plum); }
-  .logo span { color: var(--rose); }
+/* шапка */
+.top{
+  border-bottom:1px solid var(--line);padding:14px 0;
+  position:sticky;top:0;z-index:20;
+  background:rgba(244,249,251,.92);backdrop-filter:blur(10px);
+}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{
+  font-family:'Unbounded',sans-serif;font-size:19px;font-weight:600;
+  letter-spacing:.16em;color:var(--deep);
+}
+.logo span{color:var(--blue)}
+.top a.tel{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--deep);text-decoration:none;white-space:nowrap}
 
-  .btn {
-    font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 14px;
-    padding: 11px 24px; border-radius: 100px; border: none; cursor: pointer;
-    text-decoration: none; display: inline-block;
-  }
-  .btn-primary { background: var(--plum); color: var(--ivory); }
-  .btn-ghost { background: transparent; color: var(--plum); border: 1px solid var(--plum); }
+/* герой с каплей */
+.hero{position:relative;padding:52px 0 12px;overflow:hidden}
+.ripple{
+  position:absolute;top:-90px;right:-120px;width:420px;height:420px;
+  pointer-events:none;opacity:.55;
+}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(29px,7.4vw,46px);margin:16px 0 18px;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.lede{color:var(--mute);font-size:17px;max-width:50ch}
 
-  .hero {
-    max-width: 980px; margin: 0 auto; padding: 36px 24px 16px;
-    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: center;
-  }
-  .hero h1 { font-size: clamp(26px, 4vw, 38px); color: var(--plum); line-height: 1.15; }
-  .hero p { margin-top: 12px; font-size: 15px; color: #5a4f49; max-width: 46ch; }
-  .hero-actions { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+/* чек */
+.check{
+  margin:30px 0 24px;background:var(--panel);
+  border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 10px 30px -18px rgba(10,43,59,.35);
+  font-family:'JetBrains Mono',monospace;overflow:hidden;
+}
+.check-head{
+  padding:13px 18px;border-bottom:1px dashed var(--line);
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);
+  display:flex;justify-content:space-between;gap:12px;
+}
+.check-body{padding:8px 18px 4px}
+.row{display:flex;align-items:baseline;gap:8px;padding:11px 0;font-size:14.5px}
+.row .name{white-space:nowrap}
+.row .dots{flex:1;border-bottom:1px dotted #B9D2DE;transform:translateY(-4px)}
+.row .val{color:var(--blue);font-weight:700;white-space:nowrap}
+.check-total{
+  background:var(--sky);border-top:1px dashed var(--line);
+  padding:15px 18px;display:flex;align-items:baseline;gap:8px;font-size:15px;
+}
+.check-total .val{color:var(--deep);font-weight:700;font-size:19px}
+.check-foot{
+  border-top:1px solid var(--line);padding:13px 18px;
+  font-family:'Manrope',sans-serif;font-size:13px;color:var(--mute);
+}
 
-  /* Иллюстрация — платья на вешалке, нарисованы CSS, без внешних картинок */
-  .illustration { display: flex; align-items: center; justify-content: center; }
-  .illustration img { width: 100%; max-width: 420px; height: auto; object-fit: contain; }
+/* кнопка */
+.cta{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:17px 24px;background:var(--wa);color:#fff;
+  font-family:'Manrope',sans-serif;font-size:16px;font-weight:700;
+  text-decoration:none;border-radius:10px;
+  box-shadow:0 10px 22px -12px rgba(31,191,92,.9);
+  transition:filter .15s ease,transform .15s ease;
+}
+.cta:hover{filter:brightness(1.05)}
+.cta:active{transform:scale(.985)}
+.cta-note{text-align:center;color:var(--mute);font-size:13px;margin-top:11px}
 
-  .lower {
-    max-width: 980px; margin: 0 auto; padding: 8px 24px 28px;
-    display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: start;
-  }
+/* секции */
+section{padding:50px 0}
+section.alt{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+h2{font-size:clamp(22px,5.6vw,30px);margin:12px 0 10px}
+.sub{color:var(--mute);font-size:16px;margin-bottom:24px;max-width:50ch}
 
-  .how-it-works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .how-it-works .step {
-    background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; padding: 14px; text-align: center;
-  }
-  .how-it-works .step .num {
-    width: 26px; height: 26px; border-radius: 50%; background: var(--plum); color: var(--ivory);
-    display: flex; align-items: center; justify-content: center; margin: 0 auto 6px; font-weight: 700; font-size: 13px;
-  }
-  .how-it-works .step h3 { font-size: 13px; color: var(--plum); }
-  .how-it-works .step p { font-size: 11px; color: #8a7d74; margin-top: 4px; }
+/* шаги */
+.steps{list-style:none}
+.steps li{display:grid;grid-template-columns:36px 1fr;gap:14px;padding:20px 0;border-bottom:1px solid var(--line)}
+.steps li:first-child{border-top:1px solid var(--line)}
+.steps .n{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);padding-top:6px}
+.steps h3{font-size:17px;margin-bottom:6px}
+.steps p{color:var(--mute);font-size:15px}
+.steps .free{
+  display:inline-block;margin-top:9px;padding:3px 9px;border-radius:20px;
+  background:var(--sky);color:var(--blue-d);
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;
+}
 
-  .rules-box {
-    background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; padding: 16px;
-  }
-  .rules-box h3 { font-size: 14px; color: var(--plum); margin-bottom: 8px; }
-  .rules-box p { font-size: 12px; color: #5a4f49; }
-  .rules-box a { color: var(--plum); font-weight: 600; cursor: pointer; font-size: 13px; display: inline-block; margin-top: 8px; }
+/* подписка */
+.price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.price .big{font-family:'Unbounded',sans-serif;font-size:clamp(34px,9vw,48px);font-weight:600;line-height:1}
+.price .per{color:var(--mute);font-size:15px}
+.incl{list-style:none;display:grid;gap:14px;margin-top:22px}
+.incl li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start}
+.incl .tick{color:var(--blue);font-size:15px;line-height:1.6}
+.incl b{font-weight:700}
+.incl small{display:block;color:var(--mute);font-size:14px;line-height:1.5}
 
-  footer {
-    text-align: center; padding: 18px 24px; font-size: 12px; color: #a89a89;
-    border-top: 1px solid var(--line);
-  }
-  footer a { color: var(--plum); }
+/* тарифы */
+.tariffs{display:grid;gap:14px}
+.tariff{
+  border:1px solid var(--line);border-radius:14px;padding:20px 18px;
+  background:var(--paper);position:relative;
+}
+.tariff.best{border-color:var(--blue);background:var(--sky)}
+.t-tag{
+  position:absolute;top:-10px;left:18px;background:var(--blue);color:#fff;
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;
+  padding:3px 9px;border-radius:20px;
+}
+.t-name{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:500;margin-bottom:6px}
+.t-price{font-family:'Unbounded',sans-serif;font-size:32px;font-weight:600;line-height:1}
+.t-price span{font-family:'Manrope',sans-serif;font-size:14px;font-weight:400;color:var(--mute)}
+.t-what{color:var(--mute);font-size:14px;margin:10px 0 12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.tariff ul{list-style:none;display:grid;gap:8px}
+.tariff li{font-size:14.5px;padding-left:16px;position:relative}
+.tariff li:before{content:'\\2022';position:absolute;left:0;color:var(--blue)}
+@media(min-width:620px){.tariffs{grid-template-columns:1fr 1fr}}
 
-  /* Модалка с правилами/соглашением */
-  .overlay {
-    position: fixed; inset: 0; background: rgba(43,35,32,0.45);
-    display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px;
-  }
-  .overlay.open { display: flex; }
-  .modal {
-    background: var(--card-bg); border-radius: 18px; max-width: 460px; width: 100%;
-    max-height: 88vh; overflow-y: auto; padding: 28px; position: relative;
-  }
-  .modal .close {
-    position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 20px; color: #8a7d74;
-    width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-  }
+/* сравнение */
+.cmp{width:100%;border-collapse:collapse;font-size:14px}
+.cmp th,.cmp td{padding:13px 8px;text-align:right;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp th:first-child,.cmp td:first-child{text-align:left;padding-left:0;width:38%;color:var(--mute)}
+.cmp td:last-child,.cmp th:last-child{padding-right:0}
+.cmp thead th{
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:400;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--mute);
+}
+.cmp thead th:last-child{color:var(--blue)}
+.cmp td.own{color:var(--deep);font-family:'JetBrains Mono',monospace;font-size:13px}
+.cmp td.sub{color:var(--blue);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700}
+.cmp-note{color:var(--mute);font-size:13px;margin-top:16px}
 
-  /* Нижняя панель вкладок — только мобильный */
-  .mobile-tabbar {
-    display: none; position: fixed; bottom: 0; left: 0; right: 0;
-    background: var(--card-bg); border-top: 1px solid var(--line); z-index: 150;
-    padding: 6px 0; padding-bottom: env(safe-area-inset-bottom, 6px);
-  }
-  .mobile-tabbar a {
-    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
-    color: #8a7d74; font-family: 'Manrope', sans-serif; font-size: 11px; padding: 6px 0; text-decoration: none;
-  }
-  .mobile-tabbar a.active { color: var(--plum); font-weight: 700; }
-  .mobile-tabbar .icon { font-size: 20px; }
+/* faq */
+details{border-bottom:1px solid var(--line);padding:16px 0}
+details summary{
+  cursor:pointer;list-style:none;font-family:'Manrope',sans-serif;font-weight:600;
+  font-size:16px;display:flex;justify-content:space-between;gap:14px;align-items:center;
+}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:'+';color:var(--blue);font-family:'JetBrains Mono',monospace}
+details[open] summary::after{content:'–'}
+details p{color:var(--mute);font-size:15px;padding-top:11px}
 
-  @media (max-width: 760px) {
-    .hero { grid-template-columns: 1fr; padding-top: 24px; text-align: center; }
-    .hero p { margin-left: auto; margin-right: auto; }
-    .hero-actions { justify-content: center; }
+/* финал */
+.final{text-align:center;padding:56px 0 42px}
+.final .lede{margin:0 auto 24px}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--mute);font-size:13px;background:var(--panel)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--deep);text-decoration:none;font-family:'JetBrains Mono',monospace}
 
-    .illustration { margin: 8px auto 0; }
-    .illustration img { max-width: 280px; }
-
-    .lower { grid-template-columns: 1fr; padding-top: 4px; }
-    header { padding: 12px 16px; }
-    body { padding-bottom: 70px; }
-    .mobile-tabbar { display: flex !important; }
-  }
+.rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media(min-width:620px){.cta{width:auto;padding:17px 46px}.cta-row{display:flex}}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">Keide<span>.</span></div>
-  <a href="my-account.html" class="btn btn-ghost" id="account-btn">Регистрация / Вход</a>
+<header class="top">
+  <div class="wrap">
+    <div class="logo">KEID<span>E</span></div>
+    <a class="tel" href="tel:+77000000000">+7 700 000 00 00</a>
+  </div>
 </header>
 
-<section class="hero">
-  <div>
-    <h1>Одно платье — сто важных вечеров</h1>
-    <p>Keide — сервис проката платьев в Казахстане. Выбери наряд на своё событие — без затрат на платье, которое наденешь один раз.</p>
-    <div class="hero-actions">
-      <a href="catalog.html" class="btn btn-primary">Выбрать платье</a>
+<div class="hero">
+  <svg class="ripple" viewBox="0 0 400 400" aria-hidden="true">
+    <g fill="none" stroke="#0E86B8" stroke-opacity=".22">
+      <circle cx="200" cy="200" r="46" stroke-width="1.2"/>
+      <circle cx="200" cy="200" r="84" stroke-width="1.1"/>
+      <circle cx="200" cy="200" r="124" stroke-width="1"/>
+      <circle cx="200" cy="200" r="166" stroke-width=".9"/>
+      <circle cx="200" cy="200" r="208" stroke-width=".8"/>
+    </g>
+    <path d="M200 96c26 34 40 56 40 74a40 40 0 1 1-80 0c0-18 14-40 40-74z" fill="#0E86B8" fill-opacity=".14"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Чистая вода по подписке · Алматы</div>
+    <h1>Фильтр у вас дома. <em>Забота о нём — на нас</em></h1>
+    <p class="lede">Ставим систему очистки бесплатно, сами меняем картриджи и обслуживаем. Подписка от 4999 ₸ в месяц, первый месяц — за наш счёт.</p>
+
+    <div class="check">
+      <div class="check-head"><span>Сколько стоит начать</span><span>тенге</span></div>
+      <div class="check-body">
+        <div class="row"><span class="name">Аппарат</span><span class="dots"></span><span class="val">0</span></div>
+        <div class="row"><span class="name">Установка</span><span class="dots"></span><span class="val">0</span></div>
+        <div class="row"><span class="name">Первый месяц</span><span class="dots"></span><span class="val">0</span></div>
+        <div class="row"><span class="name">Картриджи</span><span class="dots"></span><span class="val">0</span></div>
+        <div class="row"><span class="name">Выезды мастера</span><span class="dots"></span><span class="val">0</span></div>
+      </div>
+      <div class="check-total"><span class="name">Итого на входе</span><span class="dots"></span><span class="val">0 ₸</span></div>
+      <div class="check-foot">Первый платёж — только со второго месяца.</div>
     </div>
+
+    <div class="cta-row">
+      <a class="cta" href="https://wa.me/77000000000?text=Здравствуйте!%20Хочу%20поставить%20фильтр">Оставить заявку</a>
+    </div>
+    <p class="cta-note">Напишите в WhatsApp — согласуем удобное время.</p>
   </div>
-  <div class="illustration">
-    <img src="hero-illustration.png" alt="Платья на вешалке" loading="lazy">
+</div>
+
+<section class="alt">
+  <div class="wrap rv">
+    <div class="eyebrow">Как это работает</div>
+    <h2>Четыре шага</h2>
+    <p class="sub">От заявки до воды из крана обычно проходит пара дней.</p>
+    <ol class="steps">
+      <li><div class="n">01</div><div><h3>Заявка</h3><p>Скажете адрес и удобное время. По одной фотографии мойки подскажем, всё ли подойдёт.</p></div></li>
+      <li><div class="n">02</div><div><h3>Установка</h3><p>Ставим систему обратного осмоса под мойку с отдельным питьевым краном. Час-полтора, мусор увозим с собой.<span class="free">Бесплатно</span></p></div></li>
+      <li><div class="n">03</div><div><h3>Первый месяц</h3><p>Пользуетесь водой. Мы выходим на связь один раз — убедиться, что всё в порядке.<span class="free">Бесплатно</span></p></div></li>
+      <li><div class="n">04</div><div><h3>Подписка</h3><p>Со второго месяца — 4999 или 8999 ₸, смотря какую систему выбрали. Дальше картриджи, обслуживание и ремонт на нас.</p></div></li>
+    </ol>
   </div>
 </section>
 
-<section class="lower">
-  <div class="how-it-works">
-    <div class="step">
-      <div class="num">1</div>
-      <h3>Выбери платье</h3>
-      <p>По городу, размеру и поводу</p>
-    </div>
-    <div class="step">
-      <div class="num">2</div>
-      <h3>Забронируй</h3>
-      <p>Укажи даты, переведи на Kaspi</p>
-    </div>
-    <div class="step">
-      <div class="num">3</div>
-      <h3>Забери и верни</h3>
-      <p>Договорись о встрече в кабинете</p>
-    </div>
-  </div>
+<section>
+  <div class="wrap rv">
+    <div class="eyebrow">Тарифы</div>
+    <h2>Два варианта</h2>
+    <p class="sub">Разница только в системе. Обслуживание одинаковое в обоих.</p>
 
-  <div class="rules-box">
-    <h3>Правила проката</h3>
-    <p>Минимальный срок — 3 дня. Оплата — переводом на Kaspi с кодом брони. Бронь без оплаты в течение 20 минут отменяется.</p>
-    <a onclick="showRules(event)">Читать полностью и соглашение →</a>
+    <div class="tariffs">
+      <div class="tariff">
+        <div class="t-name">Базовый</div>
+        <div class="t-price">4999 <span>₸/мес</span></div>
+        <div class="t-what">Проточная система, 3 ступени</div>
+        <ul>
+          <li>Убирает хлор, ржавчину, песок, запах и привкус</li>
+          <li>Ставится под мойку, отдельный питьевой кран</li>
+          <li>Замена картриджей раз в полгода</li>
+        </ul>
+      </div>
+      <div class="tariff best">
+        <div class="t-tag">Глубокая очистка</div>
+        <div class="t-name">Осмос</div>
+        <div class="t-price">8999 <span>₸/мес</span></div>
+        <div class="t-what">Обратный осмос с накопительным баком</div>
+        <ul>
+          <li>Всё то же плюс снижает соли жёсткости</li>
+          <li>Меньше накипи в чайнике, мягче вкус</li>
+          <li>Замена картриджей и мембраны по графику</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="sub" style="margin-top:24px">В обоих тарифах: установка бесплатно, первый месяц бесплатно, картриджи и выезды мастера включены, срока договора нет.</p>
+
+    <ul class="incl">
+      <li><span class="tick">◦</span><div><b>Картриджи</b><small>Меняем сами по графику. Помнить о сроках не нужно.</small></div></li>
+      <li><span class="tick">◦</span><div><b>Выезды мастера</b><small>Течёт, шумит, упал напор — приезжаем и чиним без доплат.</small></div></li>
+      <li><span class="tick">◦</span><div><b>Ремонт и замена</b><small>Аппарат наш, поэтому любая поломка — наша забота, а не ваша трата.</small></div></li>
+      <li><span class="tick">◦</span><div><b>Переезд</b><small>Сменили адрес — перевезём и переустановим.</small></div></li>
+      <li><span class="tick">◦</span><div><b>Свободный выход</b><small>Срока договора нет. Захотите остановить подписку — просто скажите, остальное сделаем мы.</small></div></li>
+    </ul>
   </div>
 </section>
+
+<section class="alt">
+  <div class="wrap rv">
+    <div class="eyebrow">Сравнение</div>
+    <h2>Если покупать самому</h2>
+    <p class="sub">Аппарат — только начало расходов. Дальше всё оплачивается отдельно и каждый раз неожиданно.</p>
+    <table class="cmp">
+      <thead><tr><th>Расход</th><th>Покупка</th><th>Подписка</th></tr></thead>
+      <tbody>
+        <tr><td>Аппарат</td><td class="own">от 100 000 ₸</td><td class="sub">0</td></tr>
+        <tr><td>Установка</td><td class="own">10–15 000 ₸</td><td class="sub">0</td></tr>
+        <tr><td>Картриджи в год</td><td class="own">20–30 000 ₸</td><td class="sub">0</td></tr>
+        <tr><td>Мембрана раз в 2 года</td><td class="own">15–20 000 ₸</td><td class="sub">0</td></tr>
+        <tr><td>Ремонт при поломке</td><td class="own">за свой счёт</td><td class="sub">0</td></tr>
+        <tr><td>Переезд</td><td class="own">за свой счёт</td><td class="sub">0</td></tr>
+        <tr><td>Помнить о замене</td><td class="own">самому</td><td class="sub">мы</td></tr>
+      </tbody>
+    </table>
+    <p class="cmp-note">Цены по рынку Алматы, ориентировочные. При подписке вы платите одну сумму в месяц, и она не меняется.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap rv">
+    <div class="eyebrow">Вопросы</div>
+    <h2>Что обычно спрашивают</h2>
+
+    <details><summary>В чём подвох, если установка бесплатная?</summary>
+      <p>Подвоха нет. Мы зарабатываем на подписке, а не на продаже аппарата. Нам выгодно, чтобы вы попробовали и остались.</p></details>
+
+    <details><summary>Чей аппарат после года оплаты?</summary>
+      <p>Наш. Вы платите за пользование и обслуживание, а не выкупаете оборудование. Поэтому и вход бесплатный, и ремонт за наш счёт.</p></details>
+
+    <details><summary>Договор нужен?</summary>
+      <p>Да, но без срока. Он фиксирует, что аппарат наш, обслуживание за нами, а вы вправе остановить подписку в любой месяц.</p></details>
+
+    <details><summary>Что именно ставите?</summary>
+      <p>На базовом тарифе — проточную систему на три ступени. На тарифе Осмос — систему обратного осмоса с баком. Обе ставятся под мойку с отдельным питьевым краном.</p></details>
+
+    <details><summary>Какой тариф выбрать?</summary>
+      <p>Если вода в доме нормальная и нужен просто вкус без хлора — базовый. Если в чайнике много накипи — берите осмос, он снижает соли жёсткости.</p></details>
+
+    <details><summary>Как платить?</summary>
+      <p>Переводом на Kaspi раз в месяц. Напоминание пришлём сами.</p></details>
+
+    <details><summary>Куда выезжаете?</summary>
+      <p>По Алматы. Про пригород спросите — если получится, приедем.</p></details>
+
+    <details><summary>Долго ставить?</summary>
+      <p>Час-полтора. Нужна мойка со свободным местом под ней и доступ к трубе.</p></details>
+  </div>
+</section>
+
+<div class="wrap final rv">
+  <h2>Оставьте заявку</h2>
+  <p class="lede">Подберём время, приедем и всё поставим. Установка и первый месяц бесплатно.</p>
+  <div class="cta-row" style="justify-content:center">
+    <a class="cta" href="https://wa.me/77000000000?text=Здравствуйте!%20Хочу%20поставить%20фильтр">Написать в WhatsApp</a>
+  </div>
+</div>
 
 <footer>
-  Keide — сервис проката платьев в Казахстане ·
-  <a onclick="showPartnerInfo(event)" style="cursor:pointer;">Для владельцев платьев</a>
+  <div class="wrap">
+    <span>KEIDE · чистая вода по подписке · Алматы</span>
+    <a href="tel:+77000000000">+7 700 000 00 00</a>
+  </div>
 </footer>
 
-<!-- Нижняя панель вкладок — видна только на мобильном -->
-<nav class="mobile-tabbar">
-  <a href="index.html" class="active"><span class="icon">🏠</span>Главная</a>
-  <a href="catalog.html"><span class="icon">👗</span>Каталог</a>
-  <a href="my-account.html"><span class="icon">👤</span>Кабинет</a>
-</nav>
-
-<!-- Модалка: инфо для владельцев платьев -->
-<div class="overlay" id="partner-info-overlay">
-  <div class="modal">
-    <span class="close" onclick="document.getElementById('partner-info-overlay').classList.remove('open')">✕</span>
-    <h2>Сдавайте платья через Keide</h2>
-    <div style="margin-top:14px; font-size:14px; color:#5a4f49;">
-      Если у вас есть платья для проката — салон, шоурум или личная коллекция — напишите нам, расскажем условия и подключим:
-    </div>
-    <!-- TODO: впиши реальный номер WhatsApp (формат 7XXXXXXXXXX) и Telegram username -->
-    <a href="https://wa.me/70000000000" target="_blank" class="btn btn-primary" style="margin-top:14px;">Написать в WhatsApp</a>
-    <a href="https://t.me/username" target="_blank" class="btn btn-ghost" style="margin-top:10px;">Написать в Telegram</a>
-  </div>
-</div>
-
-<!-- Модалка: правила / оферта -->
-<div class="overlay" id="rules-overlay">
-  <div class="modal">
-    <span class="close" onclick="document.getElementById('rules-overlay').classList.remove('open')">✕</span>
-    <h2>Правила проката</h2>
-    <div style="margin-top:12px; font-size:13px; color:#5a4f49; line-height:1.5;">
-      <strong>Публичная оферта сервиса Keide</strong><br><br>
-
-      <strong>1. Предмет.</strong> Keide — онлайн-площадка, соединяющая владельцев платьев (наймодателей) и клиентов (нанимателей) для заключения договора имущественного найма (проката) согласно гл. 29 ГК РК. Сервис не является стороной договора проката и выступает посредником в бронировании и расчётах.<br><br>
-
-      <strong>2. Бронирование и оплата.</strong> Бронь оформлена после полной оплаты (прокат + залог) переводом на реквизиты сервиса с кодом брони в комментарии. Неоплаченная бронь аннулируется через 20 минут. Минимальный срок проката — 3 дня.<br><br>
-
-      <strong>3. Залог.</strong> Обеспечивает сохранность вещи и возвращается полностью после возврата платья в надлежащем состоянии. При повреждении, утрате или просрочке из залога удерживается сумма ущерба.<br><br>
-
-      <strong>4. Наниматель обязан</strong> вернуть платье в срок в полученном состоянии (с учётом нормального износа), не передавать его третьим лицам, не производить чистку и переделку без согласования.<br><br>
-
-      <strong>5. Владелец обязан</strong> предоставить вещь, соответствующую описанию и фото, в чистом и пригодном состоянии, и отвечает за достоверность описания.<br><br>
-
-      <strong>6. Персональные данные</strong> обрабатываются согласно Закону РК «О персональных данных и их защите»: только для проверки личности, связи сторон и исполнения договора; третьим лицам, кроме второй стороны сделки, не передаются.<br><br>
-
-      <strong>7. Споры</strong> разрешаются переговорами при посредничестве сервиса на основании фото, переписки и данных брони; при недостижении согласия — в порядке, установленном законодательством РК.<br><br>
-
-      <strong>8. Акцепт.</strong> Регистрация и оформление брони означают полное принятие настоящих условий.
-    </div>
-  </div>
-</div>
-
 <script>
-  // Кнопка в шапке: не вошёл — "Регистрация / Вход", вошёл — "Личный кабинет"
-  if (localStorage.getItem("auth_token")) {
-    document.getElementById("account-btn").textContent = "Личный кабинет";
-  }
-
-  function showRules(e) {
-    e.preventDefault();
-    document.getElementById("rules-overlay").classList.add("open");
-  }
-  function showPartnerInfo(e) {
-    e.preventDefault();
-    document.getElementById("partner-info-overlay").classList.add("open");
-  }
-  document.querySelectorAll(".overlay").forEach(overlay => {
-    overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) overlay.classList.remove("open");
-    });
-  });
+(function(){
+  var io = new IntersectionObserver(function(e){
+    e.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } });
+  },{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+})();
 </script>
-
 </body>
 </html>
